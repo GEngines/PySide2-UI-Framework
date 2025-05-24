@@ -1,0 +1,241 @@
+/* Dark Theme QSS */
+
+QMainWindow, QWidget {
+    background-color: #23272e;
+    color: #eee;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+}
+
+QMenuBar {
+    background: #23272e;
+    color: #eee;
+    border-bottom: 1px solid #30343a;
+}
+
+QMenuBar::item {
+    background: transparent;
+    padding: 6px 12px;
+}
+
+QMenuBar::item:selected {
+    background: #353941;
+}
+
+QMenu {
+    background: #20232a;
+    color: #eee;
+    border: 1px solid #333;
+}
+
+QMenu::item:selected {
+    background: #363b44;
+}
+
+QStatusBar {
+    background: #23272e;
+    color: #bbb;
+}
+
+QToolBar {
+    background: #23272e;
+    border-bottom: 1px solid #30343a;
+    spacing: 4px;
+}
+
+QLabel {
+    color: #eee;
+    font-size: 14px;
+}
+
+QPushButton, #CustomButton {
+    background-color: #2563eb;
+    color: #f5f5f5;
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 15px;
+    border: none;
+}
+
+QPushButton:hover, #CustomButton:hover {
+    background-color: #1d4ed8;
+}
+
+QPushButton:pressed, #CustomButton:pressed {
+    background-color: #1939a9;
+}
+
+QLineEdit, QTextEdit, QPlainTextEdit {
+    background: #23272e;
+    color: #eee;
+    border: 1px solid #30343a;
+    border-radius: 3px;
+    padding: 4px 8px;
+    selection-background-color: #3b82f6;
+    selection-color: #fff;
+}
+
+QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus {
+    border: 1.5px solid #2563eb;
+}
+
+QCheckBox, QRadioButton {
+    spacing: 6px;
+    color: #eee;
+}
+
+QCheckBox::indicator, QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QComboBox {
+    background: #23272e;
+    border: 1px solid #30343a;
+    border-radius: 3px;
+    padding: 4px 8px;
+    color: #eee;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 24px;
+    border-left: 1px solid #30343a;
+}
+
+QComboBox QAbstractItemView {
+    background: #23272e;
+    selection-background-color: #353941;
+    color: #eee;
+}
+
+QTabWidget::pane {
+    border: 1px solid #30343a;
+    background: #23272e;
+}
+
+QTabBar::tab {
+    background: #30343a;
+    color: #eee;
+    border: 1px solid #30343a;
+    border-bottom: none;
+    padding: 8px 16px;
+    margin-right: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+QTabBar::tab:selected {
+    background: #23272e;
+    color: #3b82f6;
+    border-bottom: 1.5px solid #2563eb;
+}
+
+QGroupBox {
+    border: 1px solid #30343a;
+    border-radius: 4px;
+    margin-top: 6px;
+}
+
+QGroupBox:title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 4px 0 4px;
+    background: #23272e;
+}
+
+QSlider::groove:horizontal {
+    border: 1px solid #30343a;
+    height: 6px;
+    background: #353941;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    background: #2563eb;
+    border: 1px solid #1d4ed8;
+    width: 16px;
+    margin: -5px 0;
+    border-radius: 8px;
+}
+
+QProgressBar {
+    border: 1px solid #30343a;
+    border-radius: 4px;
+    text-align: center;
+    background: #353941;
+    height: 18px;
+    color: #eee;
+}
+
+QProgressBar::chunk {
+    background-color: #2563eb;
+    border-radius: 4px;
+}
+
+QScrollBar:vertical, QScrollBar:horizontal {
+    background: #353941;
+    border: 1px solid #30343a;
+    width: 14px;
+    margin: 0px;
+    border-radius: 7px;
+}
+
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background: #4b5563;
+    border-radius: 7px;
+    min-height: 28px;
+}
+
+QScrollBar::add-line, QScrollBar::sub-line {
+    background: #23272e;
+    border: none;
+    height: 0;
+    width: 0;
+}
+
+QTreeView, QListView, QTableView {
+    background: #23272e;
+    border: 1px solid #30343a;
+    border-radius: 3px;
+    selection-background-color: #2563eb;
+    selection-color: #fff;
+    alternate-background-color: #272b33;
+}
+
+QHeaderView::section {
+    background: #353941;
+    color: #eee;
+    border: 1px solid #30343a;
+    padding: 6px;
+}
+
+QToolTip {
+    background: #3b82f6;
+    color: #fff;
+    border: 1px solid #23272e;
+    border-radius: 3px;
+    padding: 6px;
+    font-size: 13px;
+}
+
+QDialog {
+    background: #23272e;
+    color: #eee;
+}
+
+QSpinBox, QDoubleSpinBox {
+    background: #23272e;
+    color: #eee;
+    border: 1px solid #30343a;
+    border-radius: 3px;
+    padding: 4px 8px;
+}
+
+QCalendarWidget QWidget {
+    background: #23272e;
+    color: #eee;
+}
+
+/* Add more widgets as needed for your app */
