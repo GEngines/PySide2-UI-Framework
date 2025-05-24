@@ -1,6 +1,6 @@
 import sys
 from PySide2.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QVBoxLayout
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QAction, QMenu
 )
 from PySide2 import QtWidgets, QtCore
 
@@ -9,7 +9,8 @@ def load_stylesheet(path):
     try:
         with open(path, "r") as f:
             return f.read()
-    except Exception:
+    except Exception as e:
+        print(f"Failed to load stylesheet {path}: {e}")
         return ""  # Fallback to no stylesheet if file missing
 
 class AdvancedUI(QMainWindow):
@@ -17,12 +18,17 @@ class AdvancedUI(QMainWindow):
         super().__init__()
         self.setWindowTitle("Advanced PySide2 UI (Python Only)")
         self.setGeometry(100, 100, 800, 600)
+        self.theme = "light"  # Default theme
+        self.theme_paths = {
+            "light": "resources/styles/light.css",
+            "dark": "resources/styles/dark.css"
+        }
 
         # Menu bar (supports QMenu, QMenuBar, QActions, etc.)
         self.menu_bar = self.menuBar()
         self._setup_menus()
 
-        # Toolbar
+        # Tool bar
         toolbar = QtWidgets.QToolBar("Main Toolbar")
         toolbar.addAction("Toolbar Action")
         self.addToolBar(toolbar)
@@ -98,23 +104,50 @@ class AdvancedUI(QMainWindow):
         # Status bar
         self.statusBar().showMessage("Ready")
 
+        # Apply the initial theme
+        self.apply_theme(self.theme)
+
     def _setup_menus(self):
         file_menu = self.menu_bar.addMenu("File")
         file_menu.addAction("Open")
         file_menu.addAction("Save")
         file_menu.addAction("Exit", self.close)
+
         edit_menu = self.menu_bar.addMenu("Edit")
         edit_menu.addAction("Copy")
         edit_menu.addAction("Paste")
 
+        # Theme menu for switching at runtime
+        theme_menu = QMenu("Theme", self)
+        light_action = QAction("Light", self)
+        dark_action = QAction("Dark", self)
+        light_action.setCheckable(True)
+        dark_action.setCheckable(True)
+        light_action.setChecked(self.theme == "light")
+        dark_action.setChecked(self.theme == "dark")
+        theme_menu.addAction(light_action)
+        theme_menu.addAction(dark_action)
+        self.menu_bar.addMenu(theme_menu)
+
+        # Group actions so only one can be checked
+        action_group = QtWidgets.QActionGroup(self)
+        action_group.addAction(light_action)
+        action_group.addAction(dark_action)
+
+        light_action.triggered.connect(lambda: self.apply_theme("light"))
+        dark_action.triggered.connect(lambda: self.apply_theme("dark"))
+
+    def apply_theme(self, theme_name):
+        """Switch stylesheet at runtime."""
+        if theme_name not in self.theme_paths:
+            print(f"Theme {theme_name} not found")
+            return
+        qss = load_stylesheet(self.theme_paths[theme_name])
+        self.theme = theme_name
+        QApplication.instance().setStyleSheet(qss)
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-
-    # Choose theme: "light" or "dark"
-    theme = "light"  # or "dark"
-    qss_path = f"styles/{theme}.qss"
-    app.setStyleSheet(load_stylesheet(qss_path))
-
     window = AdvancedUI()
     window.show()
     sys.exit(app.exec_())
